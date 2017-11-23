@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const ObjectId = require('mongodb').ObjectID;
 
 /**
  * GET /users
@@ -36,7 +37,7 @@ exports.getById = (req, res, next) => {
 
 
 /**
- * POST /users
+     * POST /users
  * Add a user in the db
  */
 exports.add = (req, res, next) => {
@@ -59,13 +60,13 @@ exports.add = (req, res, next) => {
         name: req.body.name,
     });
     
-    story.save().then(err => {
+    user.save().then(err => {
 
         res.status(201)
             .json({
             code: 201,
             status: 'success',
-            message: 'Story created!'
+            message: 'User created!'
         });
     })
     .catch(err => {
@@ -83,7 +84,7 @@ exports.add = (req, res, next) => {
 
 
 /**
- * PUT /users/:id
+     * PUT /users/:id
  * Edit a user in the db
  */
 exports.edit = (req, res, next) => {
@@ -126,7 +127,7 @@ exports.edit = (req, res, next) => {
 
 
 /**
- * Delete /users/:id
+     * Delete /users/:id
  * Delete a user in the db
  */
 exports.delete = (req, res, next) => {
