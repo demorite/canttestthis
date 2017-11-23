@@ -100,7 +100,7 @@ exports.edit = (req, res, next) => {
         
         for (key in params) {
             if (~POSSIBLE_KEYS.indexOf(key)) {
-                queryArgs.info[key] = params[key];
+                queryArgs[key] = params[key];
             }
         }
         
