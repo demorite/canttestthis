@@ -1,5 +1,5 @@
 process.env.PORT = 8084;
-const app = require('../app');
+const app = require('../../app');
 const chai = require('chai');
 const request = require('supertest');
 chai.should();
