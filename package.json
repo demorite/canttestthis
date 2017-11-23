@@ -7,8 +7,12 @@
     "test": "nyc mocha test/**/*.test.js"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
     "chalk": "^2.3.0",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
+    "express-validator": "^4.3.0",
+    "method-override": "^2.3.10",
     "mongoose": "^4.13.4"
   },
   "devDependencies": {

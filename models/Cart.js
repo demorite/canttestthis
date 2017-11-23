@@ -4,6 +4,7 @@ const Article = require('./Article');
 
 const cartSchema = new  mongoose.Schema({
     
+    name: String,
     products: [Article]
 
 }, { timestamps: true });
