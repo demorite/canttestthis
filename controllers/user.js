@@ -60,13 +60,13 @@ exports.add = (req, res, next) => {
         name: req.body.name,
     });
     
-    story.save().then(err => {
+    user.save().then(err => {
 
         res.status(201)
             .json({
             code: 201,
             status: 'success',
-            message: 'Story created!'
+            message: 'User created!'
         });
     })
     .catch(err => {
