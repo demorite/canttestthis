@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const expressValidator = require('express-validator');
+const logger = require('morgan');
 
 const app = express();
 const PORT = process.env.PORT || 8083;
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 8083;
  * Express configuration.
  */
 app.set('json spaces', 2);
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -24,8 +26,7 @@ app.use(expressValidator());
  */
 const indexController = require('./controllers/index');
 const userController = require('./controllers/user');
-const articleController = require('./controllers/article');
-//const cartController = require('./controllers/cart');
+const cartController = require('./controllers/cart');
 
 /**
  *  Routes
@@ -33,16 +34,17 @@ const articleController = require('./controllers/article');
 app.get('/', indexController.index);
 
 app.get('/users', userController.index);
-app.get('/users/:id([a-z0-9]{12})', userController.getById);
+app.get('/users/:id([a-z0-9])', userController.getById);
 app.post('/users', userController.add);
-app.put('/users/:id([a-z0-9]{12})', userController.edit);
-app.delete('/users/:id([a-z0-9]{12})', userController.delete);
+app.put('/users/:id([a-z0-9])', userController.edit);
+app.delete('/users/:id([a-z0-9])', userController.delete);
 
-app.get('/articles', articleController.index);
-app.get('/articles/:id([a-z0-9]{12})', articleController.getById);
-app.post('/articles', articleController.add);
-app.put('/articles/:id([a-z0-9]{12})', articleController.edit);
-app.delete('/articles/:id([a-z0-9]{12})', articleController.delete);
+app.get('/carts', cartController.index);
+app.get('/carts/:id', cartController.getById);
+app.post('/carts', cartController.add);
+app.delete('/carts/:id', cartController.delete);
+app.put('/carts/:id/articles', cartController.addArticles);
+app.put('/carts/:id/articles/:id_article/flag', cartController.setFlag);
 
 
 app.use((req, res, next) => {

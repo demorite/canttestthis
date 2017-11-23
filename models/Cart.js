@@ -6,7 +6,7 @@ const cartSchema = new  mongoose.Schema({
     
     name: String,
     owner: String,
-    products: [Article]
+    articles: [Article]
 }, { timestamps: true });
 
 const Cart = mongoose.model('carts', cartSchema);

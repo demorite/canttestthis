@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const articleSchema = new  mongoose.Schema({
     
     name: String,
-    items: Number,
     flag: {
         type: String,
-        enum: ['OK', 'NOT OK']
+        enum: ['OK', 'NOT OK'],
+        default: 'NOT OK',
     }
 
 }, { timestamps: true });
