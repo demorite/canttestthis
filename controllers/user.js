@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const ObjectId = require('mongodb').ObjectID;
 
 /**
  * GET /users

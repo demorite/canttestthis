@@ -24,7 +24,7 @@ app.use(expressValidator());
  */
 const indexController = require('./controllers/index');
 const userController = require('./controllers/user');
-//const articleController = require('./controllers/article');
+const articleController = require('./controllers/article');
 //const cartController = require('./controllers/cart');
 
 /**
@@ -38,7 +38,12 @@ app.post('/users', userController.add);
 app.put('/users/:id', userController.edit);
 app.delete('/users/:id', userController.delete);
 
- 
+app.get('/articles', articleController.index);
+app.get('/articles/:id', articleController.getById);
+app.post('/articles', articleController.add);
+app.put('/articles/:id', articleController.edit);
+app.delete('/articles/:id', articleController.delete);
+
 
 app.use((req, res, next) => {
 	res.status(404);
