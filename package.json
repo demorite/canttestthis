@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./app.js"
+    "start": "nodemon ./app.js",
+    "test": "mocha test/**/*.test.js"
   },
   "dependencies": {
     "express": "^4.16.2"
