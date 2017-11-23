@@ -1,6 +1,5 @@
 'use strict';
 const mongoose = require('mongoose');
-
 const articleSchema = new  mongoose.Schema({
     
     name: String,
@@ -11,7 +10,5 @@ const articleSchema = new  mongoose.Schema({
     }
 
 }, { timestamps: true });
-
 const Article = mongoose.model('articles', articleSchema);
-
-module.exports = Article;
+module.exports = {articleSchema, Article};
