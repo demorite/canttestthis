@@ -1,25 +1,20 @@
 const express = require('express');
 const app = express();
+const PORT = process.env.PORT || 8083;
 
-const PORT = 8081;
-
-
-app.get("*", (req, res, next) => {
-	if(res.statusCode === 200)
-		res.status(404);
-	res.send('<body style="' +
-		'background-image: url(https://http.cat/'+res.statusCode+');' +
-		'width: 100%;' +
-		'height: 100vh;' +
-		'background-size: contain;' +
-		'background-color: black;' +
-		'background-position: center;' +
-		'background-repeat: no-repeat;' +
-		'"></body>')
+app.get('/', (req, res, next) => {
+	res.send('Bonjour');
 });
 
-app.listen(PORT, function (err) {
-	if (err)
+app.use((req, res, next) => {
+	res.status(404);
+	return res.send(`<body style="width: 100%;height: 100vh; background-size: contain;background: black url(https://http.cat/${res.statusCode}) no-repeat center;"></body>`)
+});
+
+app.listen(PORT, (err) => {
+	if(err)
 		throw err;
-	console.log('Listening on http://localhost:' + PORT);
+	console.log()
 });
+
+module.exports = app;
