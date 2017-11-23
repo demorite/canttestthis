@@ -38,8 +38,6 @@ app.post('/users', userController.add);
 app.put('/users/:id', userController.edit);
 app.delete('/users/:id', userController.delete);
 
- 
-
 app.use((req, res, next) => {
 	res.status(404);
 	return res.send(`<body style="width: 100%;height: 100vh; background-size: contain;background: black url(https://http.cat/${res.statusCode}) no-repeat center;"></body>`)

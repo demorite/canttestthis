@@ -5,7 +5,6 @@ const User = require('../models/User');
  * Home page.
  */
 exports.index = (req, res, next) => {
-    
     User.find().then(users => {
 		res.json({ 
 			users
@@ -14,7 +13,7 @@ exports.index = (req, res, next) => {
 	.catch(err => {
 		return next(err);
 	});
-}
+};
 
 
 /**
@@ -26,14 +25,14 @@ exports.getById = (req, res, next) => {
     let id = req.params.id;
 
     User.findOne({_id: new ObjectId(id)}).then(user => {
-		res.json({ 
+		res.json({
 			user
 		});
 	})
 	.catch(err => {
 		return next(err);
 	});
-}
+};
 
 
 /**
@@ -80,7 +79,7 @@ exports.add = (req, res, next) => {
         }
         return next(err);    
     });
-}
+};
 
 
 /**
@@ -123,7 +122,7 @@ exports.edit = (req, res, next) => {
     .catch(err => {
         return next(err);
     });
-}
+};
 
 
 /**
@@ -144,4 +143,4 @@ exports.delete = (req, res, next) => {
     .catch(err => {
         return next(err);
     });
-}
+};
