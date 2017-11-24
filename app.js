@@ -40,9 +40,9 @@ app.put('/users/:id([a-z0-9]{12,})', userController.edit);
 app.delete('/users/:id([a-z0-9]{12,})', userController.delete);
 
 app.get('/carts', cartController.index);
-app.get('/carts/:id', cartController.getById);
+app.get('/carts/:id([a-z0-9]{12,})', cartController.getById);
 app.post('/carts', cartController.add);
-app.delete('/carts/:id', cartController.delete);
+app.delete('/carts/:id([a-z0-9]{12,})', cartController.delete);
 app.put('/carts/:id/articles', cartController.addArticles);
 app.put('/carts/:id/articles/:id_article/flag', cartController.setFlag);
 
