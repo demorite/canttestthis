@@ -34,10 +34,10 @@ const cartController = require('./controllers/cart');
 app.get('/', indexController.index);
 
 app.get('/users', userController.index);
-app.get('/users/:id([a-z0-9])', userController.getById);
+app.get('/users/:id([a-z0-9]{12,})', userController.getById);
 app.post('/users', userController.add);
-app.put('/users/:id([a-z0-9])', userController.edit);
-app.delete('/users/:id([a-z0-9])', userController.delete);
+app.put('/users/:id([a-z0-9]{12,})', userController.edit);
+app.delete('/users/:id([a-z0-9]{12,})', userController.delete);
 
 app.get('/carts', cartController.index);
 app.get('/carts/:id', cartController.getById);
@@ -46,10 +46,33 @@ app.delete('/carts/:id', cartController.delete);
 app.put('/carts/:id/articles', cartController.addArticles);
 app.put('/carts/:id/articles/:id_article/flag', cartController.setFlag);
 
-
+/**
+ * Error 404
+ */
 app.use((req, res, next) => {
-	res.status(404);
-	return res.send(`<body style="width: 100%;height: 100vh; background-size: contain;background: black url(https://http.cat/${res.statusCode}) no-repeat center;"></body>`)
+    let err = new Error('Not Found')
+    err.status = 404
+    next(err)
+});
+
+/**
+ * Error handler
+ */
+app.use((err, req, res, next) => {
+
+    let data = {
+        message: err.message,
+        status: err.status || 500
+    }
+
+    if(app.get('env') === 'development') {
+       data.stack = err.stack
+    }
+
+    res.status(data.status)
+    res.format({
+        json: () => { res.send(data) }
+    });
 });
 
 /**
