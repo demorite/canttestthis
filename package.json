@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./app.js",
-    "test": "nyc report mocha tests/**/*.js",
+    "test": "mocha tests/**/*.js",
+    "test2": "nyc report mocha tests/**/*.js",
     "codecov": "nyc report --reporter=lcov > coverage.lcov && codecov -t f84047d3-61eb-4836-ba4e-2014a9533e4d"
   },
   "dependencies": {
