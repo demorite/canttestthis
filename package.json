@@ -14,17 +14,17 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "express-validator": "^4.3.0",
+    "lodash": "latest",
     "method-override": "^2.3.10",
     "mongodb": "^2.2.33",
     "mongoose": "^4.13.4",
-    "morgan": "^1.9.0",
-    "lodash": "latest"
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "codecov": "^3.0.0",
+    "codecov": "^3.1.0",
     "mocha": "^4.0.1",
-    "nodemon": "^1.12.1",
+    "nodemon": "^1.18.7",
     "nyc": "^11.3.0",
     "sinon": "^4.1.2",
     "supertest": "^3.0.0"
