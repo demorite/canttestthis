@@ -16,7 +16,7 @@
     "express-validator": "^4.3.0",
     "lodash": "latest",
     "method-override": "^2.3.10",
-    "mongodb": "^2.2.33",
+    "mongodb": "^3.1.13",
     "mongoose": "^4.13.4",
     "morgan": "^1.9.1",
     "bson": ">=1.0.5"
